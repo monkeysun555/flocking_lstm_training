@@ -1,0 +1,50 @@
+/opt/slurm/data/slurmd/job10312125/slurm_script: line 19: ./tf_learn/bin/activate: No such file or directory
+2020-06-16 23:49:11.052452: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /share/apps/centos/7/usr/lib64:/opt/slurm/lib64
+2020-06-16 23:49:11.052518: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-06-16 23:49:11.052549: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (c42-04): /proc/driver/nvidia/version does not exist
+2020-06-16 23:49:11.060286: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2020-06-16 23:49:11.161703: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2400000000 Hz
+2020-06-16 23:49:11.176487: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5384410 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-06-16 23:49:11.176517: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+WARNING:tensorflow:From convLSTM_heatmap.py:161: Model.fit_generator (from tensorflow.python.keras.engine.training) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use Model.fit, which supports generators.
+decoder_output:  Tensor("lambda_3_1/Identity:0", shape=(None, 5, 5, 6, 1), dtype=float32)
+shape of per_video_db is:  (48, 519, 5, 6)
+shape of per_video_db_tar is:  (1, 519, 5, 6)
+shape of per_video_db_oth is:  (47, 519, 5, 6)
+Epoch 1/200
+sample yield, shape is:  (1, 10, 5, 6, 1)
+Traceback (most recent call last):
+  File "convLSTM_heatmap.py", line 161, in <module>
+    use_multiprocessing=False)
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/util/deprecation.py", line 324, in new_func
+    return func(*args, **kwargs)
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py", line 1479, in fit_generator
+    initial_epoch=initial_epoch)
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py", line 66, in _method_wrapper
+    return method(self, *args, **kwargs)
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py", line 848, in fit
+    tmp_logs = train_function(iterator)
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/eager/def_function.py", line 580, in __call__
+    result = self._call(*args, **kwds)
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/eager/def_function.py", line 644, in _call
+    return self._stateless_fn(*args, **kwds)
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 2420, in __call__
+    return graph_function._filtered_call(args, kwargs)  # pylint: disable=protected-access
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 1665, in _filtered_call
+    self.captured_inputs)
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 1746, in _call_flat
+    ctx, args, cancellation_manager=cancellation_manager))
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 598, in call
+    ctx=ctx)
+  File "/scratch/ls3817/tf/lib/python3.7/site-packages/tensorflow/python/eager/execute.py", line 60, in quick_execute
+    inputs, attrs, num_outputs)
+tensorflow.python.framework.errors_impl.InvalidArgumentError:  Operation expected a list with 1 elements but got a list with 5 elements.
+	 [[node gradient_tape/model/conv_lst_m2d_5/TensorArrayUnstack/TensorListStack (defined at convLSTM_heatmap.py:161) ]] [Op:__inference_train_function_69108]
+
+Function call stack:
+train_function
+
+2020-06-16 23:49:59.065058: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Failed precondition: Python interpreter state is not initialized. The process may be terminated.
+	 [[{{node PyFunc}}]]
